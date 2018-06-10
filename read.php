@@ -1,8 +1,9 @@
 <?php 
 	include 'koneksi.php';
 
-	$pdostatement = $koneksiPDO->prepare("SELECT * FROM kategori");
-	$pdostatement->execute();
+	$pdostatement = $koneksiPDO->prepare("SELECT * FROM kategori WHERE status=:status");
+	$array_execute[':status'] = 'on';
+	$pdostatement->execute($array_execute);
 	$result = $pdostatement->fetchAll(PDO::FETCH_ASSOC);
 
  ?>
